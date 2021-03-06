@@ -1,6 +1,6 @@
-/* Add these lines of css just to reset the browser's default css */
-
 body {
+    /* Add these lines of css just to reset the browser's default css */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }

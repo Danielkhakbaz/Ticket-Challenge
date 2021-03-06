@@ -1,0 +1,40 @@
+.home {
+    width: 100vw;
+    height: 100vh;
+    background-color: darksalmon;
+    display: flex;
+    justify-content: center;
+}
+.home__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.home__text {
+    font-size: 90px;
+    color: white;
+    text-shadow: 3px 2px 5px black;
+}
+.home button {
+    background-color: orangered;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 20px 60px;
+}
+.home button:hover {
+    background-color: rgb(206, 55, 0);
+    transition: 0.2s;
+}
+.home button:active {
+    box-shadow: none;
+}
+.home__button a {
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-self: center;
+    text-decoration: none;
+}

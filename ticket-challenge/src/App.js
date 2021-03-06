@@ -1,7 +1,12 @@
+import Router from "./Router";
 import "./App.css";
 
 const App = () => {
-    return <></>;
+    return (
+        <>
+            <Router />
+        </>
+    );
 };
 
 export default App;
