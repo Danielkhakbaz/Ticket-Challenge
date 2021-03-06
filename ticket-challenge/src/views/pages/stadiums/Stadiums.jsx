@@ -9,7 +9,8 @@ const Stadiums = () => {
 
     useEffect(() => {
         const fetchAPI = async () => {
-            await axios.get(apiURL).then((data) => {
+            await axios.get(`${apiURL}/map`).then((data) => {
+                console.log(data);
                 setStadiums(data.data.data.map_ids);
             });
         };
@@ -23,7 +24,7 @@ const Stadiums = () => {
                     <h4 className="stadium__text">Stadiums</h4>
                     {stadiums.map((stadium) => (
                         <div key={stadium}>
-                            <Link to={`${stadium}`}>{stadium}</Link>
+                            <Link to={`/stadiums/${stadium}`}>{stadium}</Link>
                         </div>
                     ))}
                 </div>
