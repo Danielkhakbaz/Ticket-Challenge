@@ -1,0 +1,15 @@
+.stadium {
+    display: flex;
+    justify-content: center;
+}
+.stadium__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.stadium__text {
+    font-size: 90px;
+    color: white;
+    text-shadow: 3px 2px 5px black;
+}

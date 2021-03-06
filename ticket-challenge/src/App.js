@@ -4,7 +4,9 @@ import "./App.css";
 const App = () => {
     return (
         <>
-            <Router />
+            <section className="app">
+                <Router />
+            </section>
         </>
     );
 };
