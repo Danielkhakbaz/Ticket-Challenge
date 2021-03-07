@@ -5,84 +5,20 @@ import "./StadiumsDetails.css";
 
 const StadiumsDetails = ({ match }) => {
     const id = match.params.id;
-    const [seats, setSeats] = useState([
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-    ]);
 
-    // useEffect(() => {
-    //     const fetchAPI = async () => {
-    //         console.log(seats);
-    //         const { data } = await axios.get(`${apiURL}/map/${id}`).then((res) => {
-    //             setSeats(data.data)
-    //         });
-    //     };
-    //     fetchAPI();
-    // });
+    const [seats, setSeats] = useState([]);
+    const [dataNumber, setDataNumber] = useState(0);
 
-    const handleBooking = async () => {
-        axios.post(`${apiURL}/map/${id}/ticket`, {}).then(
+    useEffect(() => {
+        const fetchAPI = async () => {
+            const { data } = await axios.get(`${apiURL}/map/${id}`);
+            setSeats([...seats, ...data.data[dataNumber]]);
+        };
+        fetchAPI();
+    }, [id, dataNumber, seats]);
+
+    const handleBooking = (seat) => {
+        axios.post(`${apiURL}/map/${id}/ticket/${seat}`, {}).then(
             (response) => {
                 console.log(response);
             },
@@ -92,23 +28,32 @@ const StadiumsDetails = ({ match }) => {
         );
     };
 
+    const handleNext = () => {
+        setDataNumber(dataNumber + 1);
+    };
+
     return (
         <>
             <section className="stadiumDetails">
-                <div className="stadiumDetails__div">
-                    <h4 className="stadiumDetails__text">{id} Stadium</h4>
-                    <div className="stadiumDetails__seats">
-                        {seats.map((seat) => (
-                            <button
-                                className="stadiumDetails__seat"
-                                disabled={seat === 1 && "disabled"}
-                                onClick={() => handleBooking()}
-                            >
-                                {seat}
-                            </button>
-                        ))}
-                    </div>
+                <h4 className="stadiumDetails__text">{id} Stadium</h4>
+                <div className="stadiumDetails__seats">
+                    {seats.map((seat, index) => (
+                        <button
+                            className="stadiumDetails__seat"
+                            disabled={seat === 1 && "disabled"}
+                            onClick={() => handleBooking(seat)}
+                            key={index}
+                        >
+                            {seat}
+                        </button>
+                    ))}
                 </div>
+                <button
+                    className="stadiumDetails__button--next"
+                    onClick={handleNext}
+                >
+                    Next DataNumber
+                </button>
             </section>
         </>
     );
