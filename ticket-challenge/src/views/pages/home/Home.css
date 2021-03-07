@@ -1,10 +1,6 @@
 .home {
     display: flex;
     justify-content: center;
-}
-.home__div {
-    display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -13,8 +9,13 @@
     color: white;
     text-shadow: 3px 2px 5px black;
 }
+.home a {
+    text-decoration: none;
+}
 .home button {
+    font-size: 20px;
     background-color: orangered;
+    color: white;
     border: none;
     border-radius: 7px;
     cursor: pointer;
@@ -25,13 +26,34 @@
     background-color: rgb(206, 55, 0);
     transition: 0.2s;
 }
-.home button:active {
-    box-shadow: none;
+.home button:focus {
+    outline: none;
 }
-.home__button a {
-    font-size: 20px;
-    color: white;
-    display: flex;
-    align-self: center;
-    text-decoration: none;
+
+@media only screen and (max-width: 992px) {
+    .home__text {
+        font-size: 60px;
+    }
+    .home button {
+        font-size: 14px;
+        padding: 10px 25px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .home__text {
+        font-size: 50px;
+    }
+    .home button {
+        font-size: 18px;
+        padding: 20px 40px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .home__text {
+        font-size: 40px;
+    }
+    .home button {
+        font-size: 14px;
+        padding: 10px 25px;
+    }
 }

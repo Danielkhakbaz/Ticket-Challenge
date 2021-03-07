@@ -5,12 +5,12 @@ const Home = () => {
     return (
         <>
             <section className="home">
-                <div className="home__div">
-                    <h4 className="home__text">Home</h4>
+                <h4 className="home__text">Home</h4>
+                <Link to="/stadiums">
                     <button className="home__button" type="button">
-                        <Link to="/stadiums">Go to Stadiums!</Link>
+                        Go to Stadiums!
                     </button>
-                </div>
+                </Link>
             </section>
         </>
     );
