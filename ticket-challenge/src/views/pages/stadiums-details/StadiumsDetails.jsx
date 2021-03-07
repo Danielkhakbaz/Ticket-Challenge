@@ -10,15 +10,19 @@ const StadiumsDetails = ({ match }) => {
     const [dataNumber, setDataNumber] = useState(0);
 
     useEffect(() => {
+        // I made a get request to get the data with thhe specific id
         const fetchAPI = async () => {
             const { data } = await axios.get(`${apiURL}/map/${id}`);
+            // Cause I'm not trying to get rid of previuos data, I used SPREAD OPERATOR to get the previous ones and add them to the new ones
+            // Before fetching the data, seats array is empty , so we're not going to worry about setState with a empty array
             setSeats([...seats, ...data.data[dataNumber]]);
         };
         fetchAPI();
     }, [id, dataNumber, seats]);
 
     const handleBooking = (seat) => {
-        axios.post(`${apiURL}/map/${id}/ticket/${seat}`, {}).then(
+        // In here, I made a post method to try to call the server to change the UNRESERVED seat to a RESERVED seat
+        return axios.post(`${apiURL}/map/${id}/ticket/${seat}`, { seat: 1 }).then(
             (response) => {
                 console.log(response);
             },
@@ -29,6 +33,8 @@ const StadiumsDetails = ({ match }) => {
     };
 
     const handleNext = () => {
+        // As we press this button, the dataNumber state is going to be updated
+        // and with an updated dataNumber(state), There is going to make a new request to get newer data
         setDataNumber(dataNumber + 1);
     };
 

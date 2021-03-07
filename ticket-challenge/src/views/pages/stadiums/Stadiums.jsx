@@ -12,7 +12,10 @@ const Stadiums = ({ history }) => {
         // due to its dependency, It only get called once
         const fetchAPI = async () => {
             const { data } = await axios.get(`${apiURL}/map`);
-            setStadiums(data.data.map_ids);
+            // For the warning due to memory leak, I had to make a condition to setState the state
+            if (data) {
+                setStadiums(data.data.map_ids);
+            }
         };
         fetchAPI();
     }, []);
