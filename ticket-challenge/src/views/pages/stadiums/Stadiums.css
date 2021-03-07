@@ -13,3 +13,30 @@
     color: white;
     text-shadow: 3px 2px 5px black;
 }
+.stadium__items {
+    display: grid;
+    grid-template-columns: repeat(4, 4fr);
+    grid-gap: 40px;
+}
+.stadium__button {
+    width: 50px;
+    height: 50px;
+    border: 2px solid orangered;
+    border-radius: 5px;
+}
+.stadium__button:focus {
+    outline: none;
+}
+.stadium__button--back {
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 20px 60px;
+    margin-top: 20px;
+}
+.stadium__button a {
+    text-decoration: none;
+}
